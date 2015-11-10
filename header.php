@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <link rel="icon" href="/wp-content/uploads/2015/03/657068.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/wp-content/uploads/2015/03/657068.ico" type="image/x-icon" />
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOWKyamSxMTXclSDFmJ2N4Am20PCTD6I&sensor=FALSE">
     </script>
     <title><?php bloginfo('name'); ?> <?php wp_title(); ?></title>
     <?php wp_head(); ?>
@@ -17,7 +16,7 @@
     <div class="section-width">
         <div class="header-block left">
             <a href="/">
-                <img src="<?php bloginfo('template_directory'); ?>/images/logo.png")" alt="Сценарий для квеста.рф" width="200" />
+                <img src="<?php bloginfo('template_directory'); ?>/images/logo.png" alt="Сценарий для квеста.рф" width="200" />
             </a>
         </div>
         <div class="header-block center">

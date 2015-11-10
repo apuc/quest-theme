@@ -17,15 +17,21 @@
         <h1 class="darkTtl">Реализованные сценарии</h1>
         <p class="tiny tiny__bigger">более 50 сценариев для России, СНГ и Европы</p>
     </div>
+    <?php $scenario = new WP_Query( array( 'post_type' => 'scenario') ); ?>
     <div class="scen-image">
         <ul>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/1.jpg);">
+            <?php while ( $scenario->have_posts() ) : $scenario->the_post(); ?>
+            <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium' );
+                $url = $thumb['0'];
+            ?>
+
+            <a href="<?php the_permalink(); ?>"><li style="background-image: url(<?=$url?>)" class="<?php if(get_post_meta(get_the_ID(), 'meta-box-checkbox', true)){echo "new";} ?>">
 					<span class="scen-title">
-						Ключ от всех дверей<br/>
-						<span class="scen-city">Красноярск</span>
+						<?php the_title(); ?><br/>
+						<span class="scen-city"><?php echo get_post_meta(get_the_ID(), 'city', true); ?></span>
 					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/2.jpg);">
+            </li></a>
+<!--             <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/2.jpg);">
 					<span class="scen-title">
 						Загадки Тутанхамона<br/>
 						<span class="scen-city">Мурманск</span>
@@ -90,7 +96,9 @@
 						Шпион, выйди вон<br/>
 						<span class="scen-city">Сургут</span>
 					</span>
-            </li>
+            </li> -->
+            <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>   
         </ul>
         <div class="clear"></div>
     </div>
@@ -283,12 +291,12 @@
     <div class="section-width">
         <h1 class="linedTtl">ЗАКАЗАТЬ СЦЕНАРИЙ</h1>
         <form class="question">
-            <input type="text" placeholder="Имя" name="name" />
+            <input type="text" id="testid" placeholder="Имя" name="name" />
             <input type="text" placeholder="E-mail" name="email" />
             <input type="text" class="last" placeholder="Телефон" name="phone" />
             <textarea placeholder="Вопрос" name="comment"></textarea>
             <div class="response"></div>
-            <input type="submit" value="Отправить" />
+            <input type="submit" id="sendEmail" value="Отправить" />
         </form>
     </div>
 </section>

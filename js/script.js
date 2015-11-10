@@ -28,7 +28,40 @@ function loadScript() {
 
 window.onload = loadScript;
 */
+$(document).ready(function() {
+    $(".fancybox").fancybox();
 
+    $('input[type="submit"]').on('click', function(e){
+        e.preventDefault();
+        $title = $(this).parent().find('h1').val();
+        $name = $(this).parent().find($('input[name="name"]')).val();
+        $email = $(this).parent().find($('input[name="email"]')).val();
+        if ($email==""){
+            $(this).parent().find($(".response")).text("Введите Email");
+            return false;
+        }
+        $phone = $(this).parent().find($('input[name="phone"]')).val();
+        $comment = $(this).parent().find($('textarea[name="comment"]')).val();
+        $(this).parent().find($(".response")).text("Ваше письмо отправлено");
+        jQuery.post(
+        myajax.url,
+        {
+        action : 'myajax-submit',
+        name: $name,
+        comment: $comment,
+        title: $title,
+        email: $email,
+        phone: $phone,
+        // отправим код nonce вместе с остальными данными
+        nonce : myajax.nonce
+        },
+        function( response ) {
+           // alert( response );
+        }
+    );
+    });
+    
+});
 
 $(function() {
 
