@@ -59,29 +59,12 @@
                 <div style="background-image: url('<?php echo wp_get_attachment_url( get_post_thumbnail_id() ) ?>')" class="item<?php echo $count ?>"></div>
             </a>
             <?php $count++; ?>
-<!--             <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/2.jpg" data-fancybox-group="gallery">
-                <div class="item2"></div>
-            </a>
-            <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/3.jpg" data-fancybox-group="gallery">
-                <div class="item3"></div>
-            </a>
-            <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/4.jpg" data-fancybox-group="gallery">
-                <div class="item4"></div>
-            </a>
-            <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/5.jpg" data-fancybox-group="gallery">
-                <div class="item5"></div>
-            </a>
-            <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/6.jpg" data-fancybox-group="gallery">
-                <div class="item6"></div>
-            </a>
-            <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/7.jpg" data-fancybox-group="gallery">
-                <div class="item7"></div>
-            </a>
-            <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/8.jpg" data-fancybox-group="gallery">
-                <div class="item8"></div>
-            </a> -->
         <?php endwhile; ?>
         <?php wp_reset_postdata(); ?>   
+=======
+            </a>
+
+>>>>>>> e565454b0576bc08681a781a4be1bcae6b541aac
         </div>
     </div>
 </section>
@@ -107,25 +90,25 @@
 <section class="shadow">
     <div class="section-width prices">
         <h1 class="linedTtl dark">Стоимость разработки</h1>
-        <p class="tiny">Скидка при совместном заказе 20 000 руб.</p>
+        <p class="tiny">Скидка при совместном заказе <?php echo get_theme_mod('price_sale', '20 000'); ?> руб.</p>
         <div class="price-wrap">
             <div class="price scen-box">
                 Сценарий для<br />квеста<br />
-                <span>75 000 руб</span>
+                <span><?php echo get_theme_mod('scenario', '75 000'); ?> руб</span>
             </div>
             <div class="sign">
                 <span>+</span>
             </div>
             <div class="price sound-box">
                 Музыкальное<br />сопровождение<br />
-                <span>24 000 руб</span>
+                <span><?php echo get_theme_mod('music', '24 000'); ?> руб</span>
             </div>
             <div class="sign">
                 <span>=</span>
             </div>
             <div class="price sale-box">
-                <span class="old">99 000 руб</span><br />
-                <span class="new">79 000 руб</span>
+                <span class="old"><?php echo get_theme_mod('all_price', '99 000'); ?> руб</span><br />
+                <span class="new"><?php echo get_theme_mod('all_price_sale', '79 000'); ?> руб</span>
             </div>
         </div>
         <a href="#scen" id="brif-btn-3" class="download-brif-2 fancybox">Заказать сценарий</a>
