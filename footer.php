@@ -1,15 +1,9 @@
 <section>
     <div class="section-width">
         <div class="logos">
-
-            <noindex><a href="http://phobia.ru/" rel="nofollow"><img src="<?php bloginfo('template_directory'); ?>/images/logos/logo1.png" alt="Клаустрофобия" /></a></noindex>
-            <!--<img src="images/logos/logo2.png" />-->
-            <noindex><a href="http://truexit.ru/" rel="nofollow"><img src="<?php bloginfo('template_directory'); ?>/images/logos/logo3.png" alt="TruExit" /></a></noindex>
-            <!--<img src="images/logos/logo4.png" />-->
-            <!--<img src="images/logos/logo5.png" />-->
-            <noindex><a href="http://exitgames.ru/" rel="nofollow"><img src="<?php bloginfo('template_directory'); ?>/images/logos/logo6.png" alt="ExitGames" /></a></noindex>
-            <noindex><a href="http://vlovushke.ru/" rel="nofollow"><img src="<?php bloginfo('template_directory'); ?>/images/logos/logo7.png" alt="Вловушке"/></a></noindex>
+            <?php echo apply_filters('the_content', get_post_field('post_content', 783)); ?>
         </div>
+
         <p class="req">
             ИП Постнова М.П., ИНН 301726210632, ОГРНИП 309301620100039, БИК 041806835, Р/с 40802810310000040955<br/>
             г. Астрахань, ул. Кирова 55а, офис 414‏
