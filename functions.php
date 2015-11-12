@@ -45,11 +45,24 @@ add_action('customize_register', function($customizer){
     $customizer->add_section( 
         'contacts_section', 
         array( 
-            'title' => 'Настройки главной страницы', 
+            'title' => 'Настройки логотипа и номера телефона',
             'description' => 'Контакты', 
             'priority' => 35, 
         ) 
-    ); 
+    );
+
+    $customizer->add_setting('img-logo');
+    $customizer->add_control(
+        new WP_Customize_Image_Control(
+            $customizer,
+            'img-logo',
+            array(
+                'label' => 'Логотипа',
+                'section' => 'contacts_section',
+                'settings' => 'img-logo'
+            )
+        )
+    );
 
     $customizer->add_setting( 
         'phone_textbox', 
@@ -62,7 +75,69 @@ add_action('customize_register', function($customizer){
             'section' => 'contacts_section', 
             'type' => 'text', 
         ) 
-    ); 
+    );
+
+    /*Настройка 2-го сегмента*/
+    $customizer->add_section(
+        'second_segment',
+        array(
+            'title' => 'Настройка 2-го сегмента',
+            'description' => 'Контакты',
+            'priority' => 35,
+        )
+    );
+
+    $customizer->add_setting(
+        'h1_first',
+        array('default' => 'Профессиональный сценарий')
+    );
+    $customizer->add_control(
+        'h1_first',
+        array(
+            'label' => 'Первая строка',
+            'section' => 'second_segment',
+            'type' => 'text',
+        )
+    );
+
+    $customizer->add_setting(
+        'h1_second',
+        array('default' => 'для Вашего квеста в реальности!')
+    );
+    $customizer->add_control(
+        'h1_second',
+        array(
+            'label' => 'Вторая строка',
+            'section' => 'second_segment',
+            'type' => 'text',
+        )
+    );
+
+    $customizer->add_setting(
+        'p_first',
+        array('default' => 'всего за 10 дней!')
+    );
+    $customizer->add_control(
+        'p_first',
+        array(
+            'label' => 'Маленький текст',
+            'section' => 'second_segment',
+            'type' => 'text',
+        )
+    );
+
+    $customizer->add_setting('img-back-second-segment');
+    $customizer->add_control(
+        new WP_Customize_Image_Control(
+            $customizer,
+            'img-back-second-segment',
+            array(
+                'label' => 'Логотипа',
+                'section' => 'second_segment',
+                'settings' => 'img-back-second-segment'
+            )
+        )
+    );
 }); 
 
 function my_pagenavi() {
