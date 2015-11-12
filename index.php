@@ -61,10 +61,6 @@
             <?php $count++; ?>
         <?php endwhile; ?>
         <?php wp_reset_postdata(); ?>   
-=======
-            </a>
-
->>>>>>> e565454b0576bc08681a781a4be1bcae6b541aac
         </div>
     </div>
 </section>
