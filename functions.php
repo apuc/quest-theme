@@ -106,7 +106,7 @@ $labels = array(
     'name' => 'Сценарии', // Основное название типа записи 
     'singular_name' => 'Сценарий', // отдельное название записи типа Book 
     'add_new' => 'Добавить Сценарий', 
-    'add_new_item' => 'Добавить новоый Сценарий', 
+    'add_new_item' => 'Добавить новый Сценарий', 
     'edit_item' => 'Редактировать Сценарий', 
     'new_item' => 'Новый Сценарий', 
     'view_item' => 'Посмотреть Сценарий', 
@@ -130,6 +130,36 @@ $args = array(
 ); 
 
 register_post_type('scenario', $args); 
+
+//Our team
+$labels = array( 
+    'name' => 'Наша команда', // Основное название типа записи 
+    'singular_name' => 'Наша команда', // отдельное название записи типа Book 
+    'add_new' => 'Добавить человека', 
+    'add_new_item' => 'Добавить нового человека', 
+    'edit_item' => 'Редактировать человека', 
+    'new_item' => 'Новый человек', 
+    'view_item' => 'Посмотреть человека', 
+    'search_items' => 'Найти человека', 
+    'not_found' => 'Членов команды не найдено', 
+    'menu_name' => 'Наша команда' 
+); 
+$args = array( 
+    'labels' => $labels, 
+    'public' => true, 
+    'publicly_queryable' => true, 
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true, 
+    'rewrite' => true, 
+    'capability_type' => 'post', 
+    'has_archive' => true, 
+    'hierarchical' => false, 
+    'menu_position' => null, 
+    'supports' => array('title', 'editor', 'thumbnail') 
+); 
+
+register_post_type('our_team', $args); 
 
 }
 

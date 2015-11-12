@@ -31,72 +31,6 @@
 						<span class="scen-city"><?php echo get_post_meta(get_the_ID(), 'city', true); ?></span>
 					</span>
             </li></a>
-<!--             <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/2.jpg);">
-					<span class="scen-title">
-						Загадки Тутанхамона<br/>
-						<span class="scen-city">Мурманск</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/3.jpg);">
-					<span class="scen-title">
-						Замок Графа Дракулы<br/>
-						<span class="scen-city">Анапа</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/4.jpg);">
-					<span class="scen-title">
-						Заточение<br/>
-						<span class="scen-city">Нефтеюганск</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/5.jpg);" class="new">
-					<span class="scen-title">
-						Звонок<br/>
-						<span class="scen-city">Красноярск</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/6.jpg);">
-					<span class="scen-title">
-						Код да Винчи<br/>
-						<span class="scen-city">Набережные Челны</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/7.jpg);">
-					<span class="scen-title">
-						Комната допроса<br/>
-						<span class="scen-city">Сургут</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/8.jpg);">
-					<span class="scen-title">
-						Курортный роман<br/>
-						<span class="scen-city">Анапа</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/9.jpg);" class="new">
-					<span class="scen-title">
-						E.B.O.L.A.<br/>
-						<span class="scen-city">Бишкек</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/10.jpg);">
-					<span class="scen-title">
-						Побег из Алькатраса<br/>
-						<span class="scen-city">Нефтеюганск</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/11.jpg);">
-					<span class="scen-title">
-						Узники подземелья<br/>
-						<span class="scen-city">Уссурийск</span>
-					</span>
-            </li>
-            <li style="background-image: url(<?php bloginfo('template_directory'); ?>/images/quests/12.jpg);">
-					<span class="scen-title">
-						Шпион, выйди вон<br/>
-						<span class="scen-city">Сургут</span>
-					</span>
-            </li> -->
             <?php endwhile; ?>
             <?php wp_reset_postdata(); ?>   
         </ul>
@@ -145,48 +79,20 @@
 </section>
 <section class="shadow">
     <div class="section-width examples">
+        <?php $our_team = new WP_Query( array( 'post_type' => 'our_team', 'posts_per_page' => 5) ); ?>
         <h1 class="linedTtl dark">Наша команда</h1>
+        <!-- <img src=" <?php echo wp_get_attachment_url( get_post_thumbnail_id() ) ?>" alt="" class="slider-image"> -->
         <div class="team">
+            <?php while ( $our_team->have_posts() ) : $our_team->the_post(); ?>
             <div>
-                <img src="<?php bloginfo('template_directory'); ?>/images/team/team1.jpg" alt="Александр. Сценарист квестов" />
+                <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ) ?>" />
                 <p>
-                    <span>Александр</span><br />
-                    Сценарист квестов<br />
-                    7 лет опыта
+                    <span><?php the_title(); ?></span><br />
+                    <?php the_content(); ?>
                 </p>
             </div>
-            <div>
-                <img src="<?php bloginfo('template_directory'); ?>/images/team/team2.jpg" alt="Михаил. Сценарист квестов" />
-                <p>
-                    <span>Михаил</span><br />
-                    Сценарист квестов<br />
-                    2 года опыта
-                </p>
-            </div>
-            <div>
-                <img src="<?php bloginfo('template_directory'); ?>/images/team/team3.jpg" alt="Евгений. Гейм-дизайнер" />
-                <p>
-                    <span>Евгений</span><br />
-                    Гейм-дизайнер<br />
-                    11 лет опыта
-                </p>
-            </div>
-            <div>
-                <img src="<?php bloginfo('template_directory'); ?>/images/team/team4.jpg" alt="Оксана. Звукорежиссер" />
-                <p>
-                    <span>Оксана</span><br />
-                    Звукорежиссер<br />
-                    9 лет опыта
-                </p>
-            </div>
-            <div>
-                <img src="<?php bloginfo('template_directory'); ?>/images/team/team5.jpg" alt="Егор. Дизайнер интерьеров" />
-                <p>
-                    <span>Егор</span><br />
-                    Дизайнер интерьеров<br />
-                    5 лет опыта
-                </p>
-            </div>
+            <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
         </div>
     </div>
 </section>
@@ -261,30 +167,32 @@
 <section class="shadow">
     <div class="section-width faq">
         <h1 class="linedTtl dark">Часто задаваемые вопросы</h1>
+     <?php  
+      $posts = get_posts( array(
+            'numberposts'     => 5, // тоже самое что posts_per_page
+            'offset'          => 0,
+            'category'        => '',
+            'category_name'   => 'FAQ',
+            'orderby'         => 'post_date',
+            'order'           => 'ASC',
+            'include'         => '',
+            'exclude'         => '',
+            'meta_key'        => '',
+            'meta_value'      => '',
+            'post_type'       => 'post',
+            'post_mime_type'  => '', // image, video, video/mp4
+            'post_parent'     => '',
+            'post_status'     => 'publish'
+        ) );
+        foreach($posts as $post){ setup_postdata($post);?>
         <div class="faq-box">
-            <h1>Что я получу заказав у вас сценарий для моего квеста?</h1>
-            <p>
-                Вы получаете все необходимое, для того, чтобы приступить к реализации квеста в реальности, а именно 4 файла, которые содержат:
-            </p>
-            <ol>
-                <li>Пошаговый алгоритм действий и загадок, рассчитанных на полноценную игру команды из 4х человек, а именно на 60 минут;</li>
-                <li>Подробное описание загадок, действий, расположения предметов. Рисунки, примеры и пр. Если описываемые предметы возможно приобрести в интернете, то указываем ссылки на них.</li>
-                <li>Рисованный план квеста адаптированный под Ваше помещение. С указанием и расположением всех предметов, загадок, и последовательности их нахождения игроками.</li>
-                <li>Блок-схема действий игроков. Показаны различные варианты последовательности действий, которые приведут к Победе. Кроме того, предусмотрена защита от возникновения ситуаций, когда игроки выполняют действия из середины или конца квеста, минуя ряд предыдущих.</li>
-            </ol>
+            <h1><?php the_title(); ?></h1>
+            <?php the_content(); ?>
         </div>
-        <div class="faq-box">
-            <h1>Предусмотрено ли Вашими сценариями использование технически-сложных, электронных механизмов?</h1>
-            <p>
-                Да, обязательно! Во всех наших квестах используются технически-сложные механизмы, которые вызывают у игроков эффект WOW! Все описываемые нами механизмы-загадки, электронные механизмы, вполне реализуемы инженерами и гармонично встраиваются именно в том жанре квеста, который создается.
-            </p>
-        </div>
-        <div class="faq-box">
-            <h1>Зачем нужно музыкальное сопровождение квеста?</h1>
-            <p>
-                Музыкальное сопровождение квеста это фоновая музыка с набором спецэффектов, голосов, звуков, погружающая игроков в атмосферу квеста в процессе его прохождения. Длительность звукового сопровождения не менее 60 минут. Записывается на студии звукозаписи, нашим профессиональным звукорежиссером.
-            </p>
-        </div>
+        <?php
+        }
+        wp_reset_postdata();
+        ?>
     </div>
 </section>
 <section class="back-2">
