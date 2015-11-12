@@ -74,6 +74,7 @@
             <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/8.jpg" data-fancybox-group="gallery">
                 <div class="item8"></div>
             </a>
+
         </div>
     </div>
 </section>
@@ -103,21 +104,21 @@
         <div class="price-wrap">
             <div class="price scen-box">
                 Сценарий для<br />квеста<br />
-                <span>75 000 руб</span>
+                <span><?php echo get_theme_mod('scenario', '75 000'); ?> руб</span>
             </div>
             <div class="sign">
                 <span>+</span>
             </div>
             <div class="price sound-box">
                 Музыкальное<br />сопровождение<br />
-                <span>24 000 руб</span>
+                <span><?php echo get_theme_mod('music', '24 000'); ?> руб</span>
             </div>
             <div class="sign">
                 <span>=</span>
             </div>
             <div class="price sale-box">
-                <span class="old">99 000 руб</span><br />
-                <span class="new">79 000 руб</span>
+                <span class="old"><?php echo get_theme_mod('all_price', '99 000'); ?> руб</span><br />
+                <span class="new"><?php echo get_theme_mod('all_price_sale', '79 000'); ?> руб</span>
             </div>
         </div>
         <a href="#scen" id="brif-btn-3" class="download-brif-2 fancybox">Заказать сценарий</a>

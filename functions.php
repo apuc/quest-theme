@@ -138,6 +138,68 @@ add_action('customize_register', function($customizer){
             )
         )
     );
+
+    /*Настройка цен*/
+    $customizer->add_section(
+        'price',
+        array(
+            'title' => 'Настройка цен',
+            'description' => 'Цены',
+            'priority' => 35,
+        )
+    );
+
+    $customizer->add_setting(
+        'scenario',
+        array('default' => '75 000')
+    );
+    $customizer->add_control(
+        'scenario',
+        array(
+            'label' => 'Сценарий для квеста',
+            'section' => 'price',
+            'type' => 'text',
+        )
+    );
+
+    $customizer->add_setting(
+        'music',
+        array('default' => '24 000')
+    );
+    $customizer->add_control(
+        'music',
+        array(
+            'label' => 'Музыкальное сопровождение',
+            'section' => 'price',
+            'type' => 'text',
+        )
+    );
+
+    $customizer->add_setting(
+        'all_price',
+        array('default' => '99 000')
+    );
+    $customizer->add_control(
+        'all_price',
+        array(
+            'label' => 'Всего',
+            'section' => 'price',
+            'type' => 'text',
+        )
+    );
+
+    $customizer->add_setting(
+        'all_price_sale',
+        array('default' => '79 000')
+    );
+    $customizer->add_control(
+        'all_price_sale',
+        array(
+            'label' => 'Всего со скидкой',
+            'section' => 'price',
+            'type' => 'text',
+        )
+    );
 }); 
 
 function my_pagenavi() {
