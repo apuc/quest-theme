@@ -17,7 +17,7 @@
         <h1 class="darkTtl">Реализованные сценарии</h1>
         <p class="tiny tiny__bigger">более 50 сценариев для России, СНГ и Европы</p>
     </div>
-    <?php $scenario = new WP_Query( array( 'post_type' => 'scenario') ); ?>
+    <?php $scenario = new WP_Query( array( 'post_type' => 'scenario', 'posts_per_page' => -1) ); ?>
     <div class="scen-image">
         <ul>
             <?php while ( $scenario->have_posts() ) : $scenario->the_post(); ?>

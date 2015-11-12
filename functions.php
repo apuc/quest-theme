@@ -16,11 +16,9 @@ function add_style(){
 function add_script(){
     wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-2.1.3.min.js', array(), '1');
     wp_enqueue_script( 'jq', 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js', array(), '1');
-    // wp_enqueue_script( 'my-bootstrap-extension', get_template_directory_uri() . '/js/bootstrap.js', array(), '1');
     wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/js/jquery.fancybox.js', array('jq'), '1');
     wp_enqueue_script( 'fancybox-pack', get_template_directory_uri() . '/js/jquery.fancybox.pack.js', array('fancybox'), '1');
     wp_enqueue_script( 'my-script', get_template_directory_uri() . '/js/script.js', array('fancybox-pack'), '1');
-    // wp_enqueue_script( 'fotorama-js', get_template_directory_uri() . '/js/fotorama.js', array(), '1');
     wp_localize_script( 'jquery', 'myajax', 
 array(
    'url'   => admin_url('admin-ajax.php'),
@@ -29,14 +27,8 @@ array(
 }
 
 function add_admin_script(){
-    /*wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-2.1.3.min.js', array(), '1');
-    wp_enqueue_script('admin',get_template_directory_uri() . '/js/admin.js', array(), '1');
-    wp_enqueue_style( 'my-bootstrap-extension-admin', get_template_directory_uri() . '/css/bootstrap.css', array(), '1');
-    wp_enqueue_script( 'my-bootstrap-extension', get_template_directory_uri() . '/js/bootstrap.js', array(), '1');
-    wp_enqueue_style( 'my-style-admin', get_template_directory_uri() . '/css/admin.css', array(), '1');*/
+
 }
-
-
 
 add_action('admin_enqueue_scripts', 'add_admin_script');
 add_action( 'wp_enqueue_scripts', 'add_style' );
@@ -47,6 +39,31 @@ function prn($content) {
     print_r ( $content );
     echo '</pre>';
 }
+
+add_action('customize_register', function($customizer){ 
+/*Меню настройки главной страницы*/ 
+    $customizer->add_section( 
+        'contacts_section', 
+        array( 
+            'title' => 'Настройки главной страницы', 
+            'description' => 'Контакты', 
+            'priority' => 35, 
+        ) 
+    ); 
+
+    $customizer->add_setting( 
+        'phone_textbox', 
+        array('default' => '+7 (985) 777-26-25') 
+    ); 
+    $customizer->add_control( 
+        'phone_textbox', 
+        array( 
+            'label' => 'Телефон', 
+            'section' => 'contacts_section', 
+            'type' => 'text', 
+        ) 
+    ); 
+}); 
 
 function my_pagenavi() {
     global $wp_query;
@@ -190,7 +207,9 @@ function myajax_submit() {
     add_filter( 'wp_mail_content_type', 'set_html_content_type' );
     $admin_email=get_option('admin_email');
     $form_name= $_POST['title'];
-    wp_mail( $admin_email, $form_name, 'Имя:'.$_POST['name'].'<br>Телефон:'.$_POST['phone'].'<br>Email:'.$_POST['email'].'<br>Сообщение:'.$_POST['comment'] );
+    $str = 'Имя:'.$_POST['name'].'<br>Телефон:'.$_POST['phone'].'<br>Email:'.$_POST['email'].'<br>Сообщение:'.$_POST['comment'];
+    mail($admin_email, $form_name, $str , "Content-type: text/html; charset=UTF-8\r\n");
+    // wp_mail( $admin_email, $form_name, 'Имя:'.$_POST['name'].'<br>Телефон:'.$_POST['phone'].'<br>Email:'.$_POST['email'].'<br>Сообщение:'.$_POST['comment'], "Content-type: text/html; charset=UTF-8\r\n" );
 
 // Сбросим content-type, чтобы избежать возможного конфликта
     remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
@@ -204,3 +223,6 @@ function myajax_submit() {
     // Не забываем выходить
     exit;
 }
+register_nav_menus(array( 
+    'header_menu' => 'Меню', 
+));

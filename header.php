@@ -13,6 +13,7 @@
 
 <body>
 <section>
+    <?php wp_nav_menu( array( 'theme_location' => 'header_menu','container' => 'nav', 'container_class' => 'navigation_top') );?>
     <div class="section-width">
         <div class="header-block left">
             <a href="/">
