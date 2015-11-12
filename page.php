@@ -1,7 +1,8 @@
 <?php get_header(); ?>
+<section class="shadow">
 <div class="section-width">
 	<div class="content-wrapper">
-		<h1><?php the_title(); ?></h1>
+		<h1 class="scenario-title"><?php the_title(); ?></h1>
 		<div class="content">
 			<section>
 				<?php if (have_posts()): while (have_posts()): the_post(); ?>
@@ -11,4 +12,5 @@
 		</div>
 	</div>
 </div>
+</section>
 <?php get_footer(); ?>

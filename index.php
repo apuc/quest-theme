@@ -1,4 +1,12 @@
 ﻿<?php get_header(); ?>
+<section class="back-1" style="background-image: url('<?php echo get_theme_mod('img-back-second-segment'); ?>')">
+    <div class="section-width">
+        <h1 class="linedTtl"><?php echo get_theme_mod('h1_first', 'Профессиональный сценарий'); ?></h1>
+        <h1 class="belowLinedTtl"><?php echo get_theme_mod('h1_second', 'для Вашего квеста в реальности!'); ?></h1>
+        <p><?php echo get_theme_mod('p_first', 'всего за 10 дней!'); ?></p>
+        <a href="#brif" id="brif-btn-1" class="download-brif-1 fancybox">Получить коммерческое предложение</a>
+    </div>
+</section>
 <section>
     <div class="section-width">
         <h2 class="darkTtl">
@@ -182,17 +190,5 @@
         ?>
     </div>
 </section>
-<section class="back-2">
-    <div class="section-width">
-        <h1 class="linedTtl">ЗАКАЗАТЬ СЦЕНАРИЙ</h1>
-        <form class="question">
-            <input type="text" id="testid" placeholder="Имя" name="name" />
-            <input type="text" placeholder="E-mail" name="email" />
-            <input type="text" class="last" placeholder="Телефон" name="phone" />
-            <textarea placeholder="Вопрос" name="comment"></textarea>
-            <div class="response"></div>
-            <input type="submit" id="sendEmail" value="Отправить" />
-        </form>
-    </div>
-</section>
+
 <?php get_footer() ?>

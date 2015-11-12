@@ -20,7 +20,7 @@
             </a>
         </div>
         <div class="header-block center">
-            <div class="header-phone lptracker_phone"></div><div><?php echo get_theme_mod('phone_textbox', '8 (999) 601-33-47'); ?></div>
+            <div class="header-phone lptracker_phone"><div></div><?php echo get_theme_mod('phone_textbox', '8 (999) 601-33-47'); ?></div>
             <br/>
             <div class="header-phone-label">
                 <span class="header-phone-label-item">Мы онлайн</span>
@@ -31,13 +31,5 @@
         <div class="header-block right">
             <a href="#mail" id="mail-btn" class="mailUs fancybox">Написать нам</a>
         </div>
-    </div>
-</section>
-<section class="back-1" style="background-image: url('<?php echo get_theme_mod('img-back-second-segment'); ?>')">
-    <div class="section-width">
-        <h1 class="linedTtl"><?php echo get_theme_mod('h1_first', 'Профессиональный сценарий'); ?></h1>
-        <h1 class="belowLinedTtl"><?php echo get_theme_mod('h1_second', 'для Вашего квеста в реальности!'); ?></h1>
-        <p><?php echo get_theme_mod('p_first', 'всего за 10 дней!'); ?></p>
-        <a href="#brif" id="brif-btn-1" class="download-brif-1 fancybox">Получить коммерческое предложение</a>
     </div>
 </section>

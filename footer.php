@@ -1,3 +1,16 @@
+<section class="back-2">
+    <div class="section-width">
+        <h1 class="linedTtl">ЗАКАЗАТЬ СЦЕНАРИЙ</h1>
+        <form class="question">
+            <input type="text" id="testid" placeholder="Имя" name="name" />
+            <input type="text" placeholder="E-mail" name="email" />
+            <input type="text" class="last" placeholder="Телефон" name="phone" />
+            <textarea placeholder="Вопрос" name="comment"></textarea>
+            <div class="response"></div>
+            <input type="submit" id="sendEmail" value="Отправить" />
+        </form>
+    </div>
+</section>
 <section>
     <div class="section-width">
         <div class="logos">
