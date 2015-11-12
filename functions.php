@@ -236,6 +236,37 @@ $args = array(
 
 register_post_type('our_team', $args); 
 
+
+//Examples
+$labels = array( 
+    'name' => 'Примеры из сценариев', // Основное название типа записи 
+    'singular_name' => 'Примеры из сценариев', // отдельное название записи типа Book 
+    'add_new' => 'Добавить пример из сценария', 
+    'add_new_item' => 'Добавить новый пример из сценария', 
+    'edit_item' => 'Редактировать пример из сценария', 
+    'new_item' => 'Новый пример из сценария', 
+    'view_item' => 'Посмотреть пример из сценария', 
+    'search_items' => 'Найти пример из сценария', 
+    'not_found' => 'Пример из сценариев не найдено', 
+    'menu_name' => 'Примеры из сценариев' 
+); 
+$args = array( 
+    'labels' => $labels, 
+    'public' => true, 
+    'publicly_queryable' => true, 
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true, 
+    'rewrite' => true, 
+    'capability_type' => 'post', 
+    'has_archive' => true, 
+    'hierarchical' => false, 
+    'menu_position' => null, 
+    'supports' => array('title', 'thumbnail') 
+); 
+
+register_post_type('examples', $args); 
+
 }
 
 // подключаем функцию активации мета блока в сценарии(my_extra_fields)

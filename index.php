@@ -48,12 +48,18 @@
 <section class="shadow">
     <div class="section-width examples">
         <h1 class="linedTtl dark">Примеры из наших сценариев</h1>
+         <?php $example = new WP_Query( array( 'post_type' => 'examples','order' => 'ASC','posts_per_page' => -1) ); 
+            $count=1;
+         ?>
+         
         <div class="scen">
-            <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/1.jpg" data-fancybox-group="gallery">
-                <img style="display: none;" alt="Сценарий для квеста в реальности" />
-                <div class="item1"></div>
+            <?php while ( $example->have_posts() ) : $example->the_post(); ?>
+            <a class="fancybox" href="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ) ?>" data-fancybox-group="gallery">
+                <!-- <img style="display: none;" alt="Сценарий для квеста в реальности" /> -->
+                <div style="background-image: url('<?php echo wp_get_attachment_url( get_post_thumbnail_id() ) ?>')" class="item<?php echo $count ?>"></div>
             </a>
-            <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/2.jpg" data-fancybox-group="gallery">
+            <?php $count++; ?>
+<!--             <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/2.jpg" data-fancybox-group="gallery">
                 <div class="item2"></div>
             </a>
             <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/3.jpg" data-fancybox-group="gallery">
@@ -73,7 +79,9 @@
             </a>
             <a class="fancybox" href="<?php bloginfo('template_directory'); ?>/images/scenario/8.jpg" data-fancybox-group="gallery">
                 <div class="item8"></div>
-            </a>
+            </a> -->
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>   
         </div>
     </div>
 </section>
