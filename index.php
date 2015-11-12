@@ -100,7 +100,7 @@
 <section class="shadow">
     <div class="section-width prices">
         <h1 class="linedTtl dark">Стоимость разработки</h1>
-        <p class="tiny">Скидка при совместном заказе 20 000 руб.</p>
+        <p class="tiny">Скидка при совместном заказе <?php echo get_theme_mod('price_sale', '20 000'); ?> руб.</p>
         <div class="price-wrap">
             <div class="price scen-box">
                 Сценарий для<br />квеста<br />

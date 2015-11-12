@@ -200,6 +200,19 @@ add_action('customize_register', function($customizer){
             'type' => 'text',
         )
     );
+
+    $customizer->add_setting(
+        'price_sale',
+        array('default' => '20 000')
+    );
+    $customizer->add_control(
+        'price_sale',
+        array(
+            'label' => 'Скидка при совместном заказе',
+            'section' => 'price',
+            'type' => 'text',
+        )
+    );
 }); 
 
 function my_pagenavi() {
