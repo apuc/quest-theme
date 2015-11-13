@@ -213,6 +213,42 @@ add_action('customize_register', function($customizer){
             'type' => 'text',
         )
     );
+
+    /*Настройка данных в футере*/
+    $customizer->add_section(
+        'footer_info',
+        array(
+            'title' => 'Настройка данных в футере',
+            'description' => 'Данные',
+            'priority' => 35,
+        )
+    );
+
+    $customizer->add_setting(
+        'inn',
+        array('default' => 'ИП Постнова М.П., ИНН 301726210632, ОГРНИП 309301620100039, БИК 041806835, Р/с 40802810310000040955')
+    );
+    $customizer->add_control(
+        'inn',
+        array(
+            'label' => 'Регистрационные данные',
+            'section' => 'footer_info',
+            'type' => 'text',
+        )
+    );
+
+    $customizer->add_setting(
+        'address',
+        array('default' => 'г. Астрахань, ул. Кирова 55а, офис 414‏')
+    );
+    $customizer->add_control(
+        'address',
+        array(
+            'label' => 'Адрес',
+            'section' => 'footer_info',
+            'type' => 'text',
+        )
+    );
 }); 
 
 function my_pagenavi() {
